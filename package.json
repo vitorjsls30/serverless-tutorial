@@ -1,0 +1,32 @@
+{
+  "name": "taco-gallery",
+  "version": "1.0.0",
+  "description": "A Simple project to manage and rate a taco gallery",
+  "main": "index.js",
+  "scripts": {
+    "install": "docker pull lambci/lambda",
+    "setup":"./node_modules/.bin/sls config credentials --provider aws --key KEY --secret SECRET",
+    "start": "./node_modules/.bin/sls offline start -r us-east-1 --noTimeout",
+    "install:dynamodb": "./node_modules/.bin/sls dynamodb install",
+    "start:dynamodb": "./node_modules/.bin/sls dynamodb start -p 8000 --migrate true",
+    "test": "mocha handler.test.js --compilers js:babel-core/register"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.94.0",
+    "babel": "^6.23.0",
+    "babel-core": "^6.25.0",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0",
+    "serverless-dynamodb-client": "0.0.2",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "dynalite": "^1.2.0",
+    "serverless-dynalite": "^1.0.3",
+    "serverless-dynamodb-local": "^0.2.24",
+    "serverless-offline": "^3.15.3"
+  }
+}
